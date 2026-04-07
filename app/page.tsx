@@ -256,7 +256,11 @@ export default async function Home() {
         </section>
 
         <section className="mt-10 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-          <QuickCampaigns />
+          <QuickCampaigns
+            highRiskCount={highRiskCount}
+            atRiskClientCount={atRiskClientCount}
+            totalClients={totalClients}
+          />
 
           <div>
             <div className="mb-4">
