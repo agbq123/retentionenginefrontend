@@ -48,7 +48,8 @@ function getRecommendation(risk: RiskLevel) {
 function RiskBadge({ risk }: { risk: RiskLevel }) {
   const styles: Record<RiskLevel, string> = {
     high: "bg-red-500/15 text-red-300 ring-1 ring-inset ring-red-500/35",
-    medium: "bg-amber-500/15 text-amber-200 ring-1 ring-inset ring-amber-500/35",
+    medium:
+      "bg-amber-500/15 text-amber-200 ring-1 ring-inset ring-amber-500/35",
     low: "bg-emerald-500/15 text-emerald-300 ring-1 ring-inset ring-emerald-500/35",
   };
 
@@ -141,15 +142,18 @@ export default async function Home() {
           </div>
         </div>
 
-        {atRiskClientCount > 0 ? <UrgentBanner /> : null}
+        {atRiskClientCount > 0 ? (
+          <UrgentBanner
+            revenueAtRiskLabel={formatCurrency(revenueAtRisk)}
+            atRiskClientCount={atRiskClientCount}
+            highRiskCount={highRiskCount}
+          />
+        ) : null}
 
         <section className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           <StatCard title="Total clients" value={String(totalClients)} />
           <StatCard title="High risk clients" value={String(highRiskCount)} />
-          <StatCard
-            title="At-risk clients"
-            value={String(atRiskClientCount)}
-          />
+          <StatCard title="At-risk clients" value={String(atRiskClientCount)} />
           <StatCard
             title="Revenue at risk"
             value={formatCurrency(revenueAtRisk)}
