@@ -220,7 +220,23 @@ export default async function Home() {
                         <RiskBadge risk={client.risk} />
                       </td>
                       <td className="px-4 py-4 text-zinc-300">
-                        {client.recommendation}
+                        <div>
+                          <div>{client.recommendation}</div>
+
+                          <div className="mt-1 text-xs text-zinc-500">
+                            {client.reason}
+                          </div>
+
+                          <div className="mt-1 text-xs text-zinc-600">
+                            Confidence: {client.confidence}
+                          </div>
+
+                          {client.hasUpcomingAppointment && (
+                            <div className="mt-1 text-xs text-emerald-400">
+                              Already has upcoming appointment
+                            </div>
+                          )}
+                        </div>
                       </td>
                       <td className="px-4 py-4 text-zinc-300">
                         {client.lastVisitDaysAgo} days ago
