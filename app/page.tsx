@@ -249,7 +249,12 @@ export default async function Home() {
                         </div>
                       </td>
                       <td className="px-4 py-4 text-zinc-300">
-                        {client.visitsPerMonth}
+                        <div>
+                          <div>{client.visitsPerMonth}</div>
+                          <div className="text-xs text-zinc-500">
+                            every ~{Math.round(client.cadenceDays)} days
+                          </div>
+                        </div>
                       </td>
                       <td className="px-4 py-4 font-medium text-zinc-100">
                         {formatCurrency(client.recoveryValue)}
