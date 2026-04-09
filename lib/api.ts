@@ -5,13 +5,29 @@ export type Client = {
   name: string;
   phone: string | null;
   email: string | null;
+
   risk: RiskLevel;
+  riskScore: number;
+
   recommendation: string;
+  reason: string;
+  confidence: string;
+
   lastVisitDaysAgo: number;
+  cadenceDays: number;
+  expectedNextVisit: string | null;
+  daysLate: number;
+
+  hasUpcomingAppointment: boolean;
+  upcomingAppointmentDate: string | null;
+
   visitsPerMonth: number;
   recoveryValue: number;
+
   visitCount: number;
   lifetimeValue: number;
+  avgTicket: number;
+
   firstVisit: string | null;
   lastVisit: string | null;
 };
