@@ -239,7 +239,14 @@ export default async function Home() {
                         </div>
                       </td>
                       <td className="px-4 py-4 text-zinc-300">
-                        {client.lastVisitDaysAgo} days ago
+                        <div>
+                          <div>{client.lastVisitDaysAgo} days ago</div>
+                          <div className="text-xs text-zinc-500">
+                            {client.daysLate > 0
+                              ? `${client.daysLate} days late`
+                              : "On schedule"}
+                          </div>
+                        </div>
                       </td>
                       <td className="px-4 py-4 text-zinc-300">
                         {client.visitsPerMonth}
