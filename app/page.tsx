@@ -218,6 +218,12 @@ export default async function Home() {
                       </td>
                       <td className="px-4 py-4">
                         <RiskBadge risk={client.risk} />
+
+                        {client.hasUpcomingAppointment && (
+                          <div className="mt-1 text-xs text-emerald-400">
+                            Booked
+                          </div>
+                        )}
                       </td>
                       <td className="px-4 py-4 text-zinc-300">
                         <div>
