@@ -1,5 +1,6 @@
 import { QuickCampaigns } from "@/components/quick-campaigns";
 import { SendSmsPreviewButton } from "@/components/send-sms-preview-button";
+import { SyncSquareButton } from "@/components/sync-square-button";
 import { UrgentBanner } from "@/components/urgent-banner";
 import {
   getClients,
@@ -132,13 +133,16 @@ export default async function Home() {
             </h1>
           </div>
 
-          <div className="text-sm text-zinc-400">
-            Today{" "}
-            {new Intl.DateTimeFormat("en-US", {
-              weekday: "short",
-              month: "short",
-              day: "numeric",
-            }).format(new Date())}
+          <div className="flex flex-col items-end gap-3">
+            <div className="text-sm text-zinc-400">
+              Today{" "}
+              {new Intl.DateTimeFormat("en-US", {
+                weekday: "short",
+                month: "short",
+                day: "numeric",
+              }).format(new Date())}
+            </div>
+            <SyncSquareButton />
           </div>
         </div>
 

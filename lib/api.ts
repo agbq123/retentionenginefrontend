@@ -5,31 +5,21 @@ export type Client = {
   name: string;
   phone: string | null;
   email: string | null;
-
   risk: RiskLevel;
-  riskScore: number;
-
   recommendation: string;
-  reason: string;
-  confidence: string;
-
   lastVisitDaysAgo: number;
-  cadenceDays: number;
-  expectedNextVisit: string | null;
-  daysLate: number;
-
-  hasUpcomingAppointment: boolean;
-  upcomingAppointmentDate: string | null;
-
   visitsPerMonth: number;
   recoveryValue: number;
-
   visitCount: number;
   lifetimeValue: number;
-  avgTicket: number;
-
   firstVisit: string | null;
   lastVisit: string | null;
+  hasUpcomingAppointment: boolean;
+  upcomingAppointmentDate: string | null;
+  reason: string;
+  confidence: string;
+  daysLate: number;
+  cadenceDays: number;
 };
 
 export type DashboardMetrics = {
@@ -68,4 +58,21 @@ export async function getTopOpportunities(): Promise<Client[]> {
     "/api/clients/top-opportunities"
   );
   return data.clients;
+}
+
+export async function syncSquare(): Promise<{
+  status: string;
+  counts: Record<string, number>;
+}> {
+  const res = await fetch(`${API_BASE}/integrations/square/sync`, {
+    method: "GET",
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.error || "Square sync failed");
+  }
+
+  return data;
 }
